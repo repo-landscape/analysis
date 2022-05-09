@@ -1,42 +1,64 @@
-# This is a sample Python script.
+#!/usr/bin/env python
+# -*- conding: utf-8
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+"""
+filter gitlab repo metadata
+"""
 
+import pandas as pd
+import flask
+import sys
+from antlr4 import ParseTreeWalker, CommonTokenStream, InputStream
+from antlr4 import *
+from antlr4.InputStream import InputStream
+from pathlib import Path
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+# from GitConfLexer import GitConfLexer
+# from GitConfParser import GitConfParser
+# from GitConfListener import GitConfListener
 
+KEY = 'glpat-xinShZakar9yrWvpYK2_'
+URL = 'https://gitlab.com/api/v4/projects?visibility=private&per_page=300&private_token=' + KEY
+OUTPUTFILE = Path('./output') / 'outputfile.json'
 
-# Press the green button in the gutter to run the script.
+def main():
+    filtermetadata = FilterMetadata()
+    gittableapi = Gittableapi()
+    gittableapi.app.run(host='0.0.0.0', port=5000)
+    return 0
+
+class FilterMetadata:
+    df = pd.read_json(URL, orient='tight')[[
+        'name',
+        'id',
+        'http_url_to_repo',
+        'description',
+        'name']]
+
+    def __init__(self):
+        df = pd.read_json(URL, orient='tight')[['description', 'name']]
+        self.write(self.df)
+
+    def read(self):
+        pass
+        return 0
+
+    def write(self, df):
+        df.to_json(OUTPUTFILE, orient='split')
+
+class Gittableapi():
+    app = flask.Flask(__name__)
+    app.config["DEBUG"] = True
+    def routes(self):
+        @self.app.route('/', methods=['GET'])
+        def home():
+            return FilterMetadata.df
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-    import urllib3
-    import json
+    if len(sys.argv) > 1:
+        input_stream = FileStream(sys.argv[1])
+    else:
+        # input_stream = InputStream(sys.stdin.read())
+        pass
+    main()
 
-    jsonfn = 'gitlab-list_2022.json'
-
-    key = 'glpat-xinShZakar9yrWvpYK2_'
-    url = 'https://gitlab.com/api/v4/projects?visibility=private&per_page=300&private_token=' + key
-    http = urllib3.PoolManager()
-
-    r = http.request('GET', url)
-    # r.data
-    obj = json.loads(r.data)
-
-    # TODO: add paging - https://docs.gitlab.com/ee/api/index.html#pagination
-    # use "Link" header to get to next/last !
-
-    # r.headers
-    with open(jsonfn, 'w') as outfile:
-        json.dump(obj, outfile)
-
-    print(len(obj))
-    print (json.dumps(obj, indent=2))
-    filtered_dict = [ x for x in obj if x ['name_with_namespace'] == 'ACDH-CH / InTavia / intavia nlp suite']
-    print(filtered_dict)
-    # print (obj["name_with_namespace"])
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
