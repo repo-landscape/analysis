@@ -1,0 +1,43 @@
+---
+title: ACDH-CD GitLab repository statistitcs
+output: 
+  html_document: 
+    df_print: default
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+p = readr::read_csv2('data/projects.csv')
+e = readr::read_csv2('data/events.csv')
+u = readr::read_csv2('data/users.csv')
+```
+
+# Projects per user
+
+```{r}
+u %>%
+  group_by(username) %>%
+  summarize(projects_count = n_distinct(project_id)) %>%
+  arrange(desc(projects_count)) %>%
+  rmarkdown::paged_table()
+```
+
+# Events by type
+
+```{r}
+e %>%
+  group_by(action_name) %>%
+  summarize(n = n_distinct(author_username)) %>%
+  arrange(desc(n)) %>%
+  rmarkdown::paged_table()
+```
+# Projects with push events by user
+
+```{r}
+e %>% 
+  filter(grepl('^pushed', action_name)) %>% 
+  group_by(author_username) %>%
+  summarize(projects_count = n_distinct(project_id)) %>%
+  arrange(desc(projects_count)) %>%
+  rmarkdown::paged_table()
+```
