@@ -1,0 +1,216 @@
+,URI,cnt,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.w3.org/2000/01/rdf-schema#label,http://www.w3.org/2000/01/rdf-schema#subClassOf,Examples (base URI),http://www.w3.org/2000/01/rdf-schema#comment,http://www.w3.org/2000/01/rdf-schema#subPropertyOf,http://www.w3.org/2002/07/owl#equivalentClass,http://www.w3.org/2000/01/rdf-schema#isDefinedBy,http://www.openlinksw.com/schemas/virtrdf#isGcResistantType
+0,http://www.w3.org/2002/07/owl#InverseFunctionalProperty,3,http://www.w3.org/2000/01/rdf-schema#Class,InverseFunctionalProperty,http://www.w3.org/2002/07/owl#ObjectProperty,"['http://xmlns.com/foaf/0.1/', 'http://linkedopencommerce.com/schemas/icecat/v1/']",,,,,
+1,http://www.w3.org/2002/07/owl#SymmetricProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,SymmetricProperty,http://www.w3.org/2002/07/owl#ObjectProperty,,,,,,
+2,http://www.w3.org/2002/07/owl#FunctionalProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,FunctionalProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,,,,,,
+3,http://www.w3.org/2002/07/owl#TransitiveProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,TransitiveProperty,http://www.w3.org/2002/07/owl#ObjectProperty,,,,,,
+4,http://www.w3.org/2002/07/owl#Class,16,http://www.w3.org/2000/01/rdf-schema#Class,Class,http://www.w3.org/2000/01/rdf-schema#Class,"['http://www.w3.org/2002/07/', 'nodeID://']",,,,,
+5,http://www.w3.org/2002/07/owl#Ontology,3,http://www.w3.org/2000/01/rdf-schema#Class,Ontology,,"['http://www.w3.org/2002/07/', 'http://www.openlinksw.com/schemas/', 'https://w3id.org/']",,,,,
+6,http://www.w3.org/2002/07/owl#OntologyProperty,4,http://www.w3.org/2000/01/rdf-schema#Class,OntologyProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,['http://www.w3.org/2002/07/'],,,,,
+7,http://www.w3.org/2002/07/owl#AnnotationProperty,5,http://www.w3.org/2000/01/rdf-schema#Class,AnnotationProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,"['http://www.w3.org/2000/01/', 'http://www.w3.org/2002/07/']",,,,,
+8,http://www.w3.org/2002/07/owl#AllDifferent,0,http://www.w3.org/2000/01/rdf-schema#Class,AllDifferent,,,,,,,
+9,http://www.w3.org/2002/07/owl#Restriction,0,http://www.w3.org/2000/01/rdf-schema#Class,Restriction,http://www.w3.org/2002/07/owl#Class,,,,,,
+10,http://www.w3.org/2002/07/owl#ObjectProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,ObjectProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,,,,,,
+11,http://www.w3.org/2002/07/owl#DatatypeProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,DatatypeProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,,,,,,
+12,http://www.w3.org/2002/07/owl#DeprecatedClass,0,http://www.w3.org/2000/01/rdf-schema#Class,DeprecatedClass,http://www.w3.org/2000/01/rdf-schema#Class,,,,,,
+13,http://www.w3.org/2002/07/owl#DeprecatedProperty,0,http://www.w3.org/2000/01/rdf-schema#Class,DeprecatedProperty,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,,,,,,
+14,http://www.w3.org/2002/07/owl#DataRange,0,http://www.w3.org/2000/01/rdf-schema#Class,DataRange,,,,,,,
+15,http://www.openlinksw.com/schemas/oplweb#DownloadLocation,0,"['http://www.w3.org/2000/01/rdf-schema#Class', 'http://purl.org/goodrelations/v1#ActualProductOrServicesInstance']",Download Location,http://purl.org/goodrelations/v1#ActualProductOrServicesInstance,,"
+			Download Location
+		",,,,
+16,http://www.openlinksw.com/schemas/oplweb#ComponentArchive,0,"['http://www.w3.org/2000/01/rdf-schema#Class', 'http://purl.org/goodrelations/v1#ProductOrServiceSomeInstancePlaceholder']",Component Archive,http://purl.org/goodrelations/v1#ProductOrServiceSomeInstancePlaceholder,,"
+			Component Archives
+		",,,,
+17,http://www.openlinksw.com/schemas/oplweb#PriceUnitType,0,"['http://www.w3.org/2000/01/rdf-schema#Class', 'http://purl.org/goodrelations/v1#PriceSpecification']",Unit Type,http://purl.org/goodrelations/v1#UnitPriceSpecification,,"
+			Unit Type
+		",,,,
+18,http://www.openlinksw.com/schemas/oplweb#ProductFamily,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Family,http://purl.org/goodrelations/v1#ProductOrService,,"
+			Product Family
+		",,,,
+19,http://www.openlinksw.com/schemas/oplweb#ProductCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Category,http://www.openlinksw.com/schemas/oplweb#ProductFamily,,"
+			Product Category
+		",,,,
+20,http://www.openlinksw.com/schemas/oplweb#ProductFormat,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Format,http://www.openlinksw.com/schemas/oplweb#ProductFamily,,"
+			Product Format
+		",,,,
+21,http://www.openlinksw.com/schemas/oplweb#ProductFormatCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Format Category,"['http://www.openlinksw.com/schemas/oplweb#ProductFamily', 'http://www.openlinksw.com/schemas/oplweb#ProductCategory', 'http://www.openlinksw.com/schemas/oplweb#ProductFormat']",,"
+			Product Format Category
+		",,,,
+22,http://www.openlinksw.com/schemas/oplweb#Product,0,http://www.w3.org/2000/01/rdf-schema#Class,Product,http://purl.org/goodrelations/v1#ProductOrService,,"
+			Product
+		","['http://www.openlinksw.com/schemas/oplweb#ProductCategory', 'http://www.openlinksw.com/schemas/oplweb#ProductFormat']",,,
+23,http://www.openlinksw.com/schemas/oplweb#Opsys,0,http://www.w3.org/2000/01/rdf-schema#Class,Operating System,"['http://www.openlinksw.com/schemas/oplweb#OpsysFamily', 'http://www.openlinksw.com/schemas/oplweb#OpsysType']",,"
+			The operating system or underlaying platform.
+		",,,,
+24,http://www.openlinksw.com/schemas/oplweb#DbmsEngine,0,http://www.w3.org/2000/01/rdf-schema#Class,DBMS Engine,http://www.openlinksw.com/schemas/oplweb#DbmsFamily,,"
+			Database Management System Engine
+		",,,,
+25,http://www.openlinksw.com/schemas/oplweb#VendorCategoryFamily,0,http://www.w3.org/2000/01/rdf-schema#Class,vendor_category_family,,,"
+			Vendor Category Family
+		",,,,
+26,http://www.openlinksw.com/schemas/oplweb#VendorCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,vendor_category,http://www.openlinksw.com/schemas/oplweb#VendorCategoryFamily,,"
+			Vendor Category
+		",,,,
+27,http://www.openlinksw.com/schemas/oplweb#Vendors,0,http://www.w3.org/2000/01/rdf-schema#Class,vendors,http://www.openlinksw.com/schemas/oplweb#VendorCategory,,"
+			Vendors
+		",,,,
+28,http://www.openlinksw.com/schemas/oplweb#OpsysFamily,0,http://www.w3.org/2000/01/rdf-schema#Class,OS Family,,,"
+			Operating System Family
+		",,,,
+29,http://www.openlinksw.com/schemas/oplweb#DbmsFamily,0,http://www.w3.org/2000/01/rdf-schema#Class,DBMS Family,,,"
+			Database Management System Family
+		",,,,
+30,http://www.openlinksw.com/schemas/oplweb#OpsysType,0,http://www.w3.org/2000/01/rdf-schema#Class,OS Type,,,"
+			Operating System Type
+		",,,,
+31,http://www.openlinksw.com/schemas/oplweb#ProcessorMode,0,http://www.w3.org/2000/01/rdf-schema#Class,Processor Mode,,,"
+			Processor Mode
+		",,,,
+32,http://www.openlinksw.com/schemas/oplweb#Processor,0,http://www.w3.org/2000/01/rdf-schema#Class,Processor,http://www.openlinksw.com/schemas/oplweb#ProcessorFamily,,"
+			Processor
+		",,,,
+33,http://www.openlinksw.com/schemas/oplweb#ProcessorFamily,0,http://www.w3.org/2000/01/rdf-schema#Class,Processor Family,,,"
+			Processor Family
+		",,,,
+34,http://www.openlinksw.com/schemas/oplweb#ProductRelease,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Release,"['http://www.openlinksw.com/schemas/oplweb#Product', 'http://purl.org/goodrelations/v1#ProductOrServiceModel']",,"
+			Product Release
+		",,,,
+35,http://www.openlinksw.com/schemas/oplweb#Component,0,http://www.w3.org/2000/01/rdf-schema#Class,Components,,,"
+			Components
+		",,,,
+36,http://www.openlinksw.com/schemas/oplweb#ComponentMode,0,http://www.w3.org/2000/01/rdf-schema#Class,Component Mode,,,"
+			Component
+		",,,,
+37,http://www.openlinksw.com/schemas/oplweb#ComponentType,0,http://www.w3.org/2000/01/rdf-schema#Class,Component,,,"
+			Component Type
+		",,,,
+38,http://www.openlinksw.com/schemas/oplweb#ComponentCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,Component Category,,,"
+			Component
+		",,,,
+39,http://www.openlinksw.com/schemas/oplweb#ComponentArchiveType,0,http://www.w3.org/2000/01/rdf-schema#Class,Component Archive Type,,,"
+			Component Archives Type
+		",,,,
+40,http://www.openlinksw.com/schemas/oplweb#PriceUnitIncrementalDiscount,0,http://www.w3.org/2000/01/rdf-schema#Class,Unit Incremental Discount,http://purl.org/goodrelations/v1#QuantativeValueInteger,,"
+			Unit Incremental Discount
+		",,,,
+41,http://www.openlinksw.com/schemas/oplweb#DownloadProtocol,0,http://www.w3.org/2000/01/rdf-schema#Class,Download Protocol,,,"
+			Download Protocol
+		",,,,
+42,http://www.openlinksw.com/schemas/oplweb#DownloadPartner,0,http://www.w3.org/2000/01/rdf-schema#Class,Download Partner,,,"
+			Download Partner
+		",,,,
+43,http://www.openlinksw.com/schemas/oplweb#ProductBenefit,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Benefit,http://www.openlinksw.com/schemas/oplweb#ProductBenefitCategory,,"
+			Product Benefit
+		",,,,
+44,http://www.openlinksw.com/schemas/oplweb#ProductBenefitCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Benefit,,,"
+			Product Benefit
+		",,,,
+45,http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Feature Category,,,"
+			Product Feature Category
+		",,,,
+46,http://www.openlinksw.com/schemas/oplweb#ProductFeature,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Features,"['http://www.openlinksw.com/schemas/oplweb#Product', 'http://www.openlinksw.com/schemas/oplweb#ProductBenefit', 'http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory']",,"
+			Product Features
+		",,,,
+47,http://www.openlinksw.com/schemas/oplweb#ProductFamilyFeature,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Family Features,"['http://www.openlinksw.com/schemas/oplweb#ProductFamily', 'http://www.openlinksw.com/schemas/oplweb#ProductBenefit', 'http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory']",,"
+			Product Family Features
+		",,,,
+48,http://www.openlinksw.com/schemas/oplweb#ProductFormatFeature,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Format Features,"['http://www.openlinksw.com/schemas/oplweb#ProductFormat', 'http://www.openlinksw.com/schemas/oplweb#ProductBenefit', 'http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory']",,"
+			Product Format Features
+		",,,,
+49,http://www.openlinksw.com/schemas/oplweb#ProductCategoryFeature,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Category Features,"['http://www.openlinksw.com/schemas/oplweb#ProductCategory', 'http://www.openlinksw.com/schemas/oplweb#ProductBenefit', 'http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory']",,"
+			Product Category Features
+		",,,,
+50,http://www.openlinksw.com/schemas/oplweb#ProductReleaseFeature,0,http://www.w3.org/2000/01/rdf-schema#Class,Product Benefit,"['http://www.openlinksw.com/schemas/oplweb#ProductRelease', 'http://www.openlinksw.com/schemas/oplweb#ProductBenefit', 'http://www.openlinksw.com/schemas/oplweb#ProductFeatureCategory']",,"
+			Product Benefit
+		",,,,
+51,http://www.openlinksw.com/schemas/oplweb#LicenseType,0,http://www.w3.org/2000/01/rdf-schema#Class,License Type,,,"
+			License Type
+		",,,,
+52,http://www.openlinksw.com/schemas/oplweb#PriceType,0,http://www.w3.org/2000/01/rdf-schema#Class,Price Type,http://purl.org/goodrelations/v1#typeOfGood,,"
+			Price Type
+		",,,,
+53,http://www.openlinksw.com/schemas/oplweb#GeneralDiscount,0,http://www.w3.org/2000/01/rdf-schema#Class,General Discount,,,"
+			General Discount
+		",,,,
+54,http://www.openlinksw.com/schemas/oplweb#IncrementalDiscount,0,http://www.w3.org/2000/01/rdf-schema#Class,Incremental Discount,,,"
+			Incremental Discount
+		",,,,
+55,http://www.openlinksw.com/schemas/oplweb#LicenseModel,0,http://www.w3.org/2000/01/rdf-schema#Class,License,http://purl.org/goodrelations/v1#Offering,,"
+			License
+		",,,,
+56,https://w3id.org/dingo#AcademicDegree,0,http://www.w3.org/2000/01/rdf-schema#Class,AcademicDegree,,,The class for academic degrees: college or university diploma.,,http://www.wikidata.org/entity/Q189533,https://w3id.org/dingo#,
+57,https://w3id.org/dingo#AgeCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,AgeCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded to projects on the basis of age limits.,,,https://w3id.org/dingo#,
+58,https://w3id.org/dingo#ArchiveOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,ArchiveOrganisation,https://w3id.org/dingo#Organisation,,"Institution that holds artifacts and other objects of scientific, artistic, cultural, historical, or other importance.",,,https://w3id.org/dingo#,
+59,https://w3id.org/dingo#BottomUpCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,BottomUpCriterion,https://w3id.org/dingo#Criterion,,"Grants are awarded to projects on the basis of the research proposal itself without restriction on theme/subject or research area. The funding body does not specifies beforehand missions, targets nor topics of the research projects that can apply.",,,https://w3id.org/dingo#,
+60,https://w3id.org/dingo#CareerPurposeCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,CareerPurposeCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded on the basis of career-related goals and applicants must be at a defined career stage (defined academic degree) to be achieved.,,,https://w3id.org/dingo#,
+61,https://w3id.org/dingo#CareerStageCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,CareerStageCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded to projects on the basis of career stage limits.,,,https://w3id.org/dingo#,
+62,https://w3id.org/dingo#Company,0,http://www.w3.org/2000/01/rdf-schema#Class,Company,https://w3id.org/dingo#Organisation,,A commercial business.,,,https://w3id.org/dingo#,
+63,https://w3id.org/dingo#Criterion,0,http://www.w3.org/2000/01/rdf-schema#Class,Criterion,,,"Specification of Grant coverage, Grant eligibility, Grant reimbursement rates, Grant specific criteria for funding, Grant population targets, and similar features.",,,https://w3id.org/dingo#,
+64,https://w3id.org/dingo#CulturalOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,CulturalOrganisation,https://w3id.org/dingo#Organisation,,Cultural institution or cultural organization is an organization within a culture/subculture that works for the preservation or promotion of culture.,,,https://w3id.org/dingo#,
+65,https://w3id.org/dingo#EmploymentCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,EmploymentCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded on the basis of employment conditions by an organisation eligible for funding at the time of applying or receiving the funds.,,,https://w3id.org/dingo#,
+66,https://w3id.org/dingo#FacilityOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,FacilityOrganisation,https://w3id.org/dingo#Organisation,,A place providing for a particular purpose.,,,https://w3id.org/dingo#,
+67,https://w3id.org/dingo#FundingAgency,0,http://www.w3.org/2000/01/rdf-schema#Class,FundingAgency,https://w3id.org/dingo#Organisation,,The class for funding agencies: organisation that materially disburse and administer the Grant process.,,,https://w3id.org/dingo#,
+68,https://w3id.org/dingo#GeographicCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,GeographicCriterion,https://w3id.org/dingo#Criterion,,"Grants are awarded to projects on the basis of geographic areas, either where the project has to be implemented, or where the researcher must have been operating before applying for funding, or where the participants must be resident or citizens.",,,https://w3id.org/dingo#,
+69,https://w3id.org/dingo#GrantPayment,0,http://www.w3.org/2000/01/rdf-schema#Class,GrantPayment,,,The class for grant payments: a single payment to a recipient or beneficiary within a Grant.,,,https://w3id.org/dingo#,
+70,https://w3id.org/dingo#HealthcareOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,HealthcareOrganisation,https://w3id.org/dingo#Organisation,,Organization that provides health care and related services.,,http://schema.org/MedicalOrganization,https://w3id.org/dingo#,
+71,https://w3id.org/dingo#HigherEducationOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,HigherEducationOrganisation,https://w3id.org/dingo#Organisation,,"Place of postsecondary education (e.g., universities, vocational universities, community colleges, liberal arts colleges, institutes of technology, and others).",,,https://w3id.org/dingo#,
+72,https://w3id.org/dingo#InfrastructurePurposeCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,InfrastructurePurposeCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded to cover for the expenses of infrastructure.,,,https://w3id.org/dingo#,
+73,https://w3id.org/dingo#IntergovernmentalOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,IntergovernmentalOrganisation,https://w3id.org/dingo#Organisation,,Organization composed primarily of sovereign states. Example: United Nations.,,,https://w3id.org/dingo#,
+74,https://w3id.org/dingo#NonprofitOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,NonprofitOrganisation,https://w3id.org/dingo#Organisation,,"Business entity that pays no income tax, as it furthers a religious, scientific or social cause, providing a public benefit.",,,https://w3id.org/dingo#,
+75,https://w3id.org/dingo#OrganisationalCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,OrganisationalCriterion,https://w3id.org/dingo#Criterion,,"Grants are awarded on the basis of specified organisational form of the project, for instance demanding for participation of different research groups (synergy).",,,https://w3id.org/dingo#,
+76,https://w3id.org/dingo#PerformingGroup,0,http://www.w3.org/2000/01/rdf-schema#Class,PerformingGroup,https://w3id.org/dingo#Organisation,,"A performance group, such as a band, an orchestra, or a circus.",,http://schema.org/PerformingGroup,https://w3id.org/dingo#,
+77,https://w3id.org/dingo#Person,0,http://www.w3.org/2000/01/rdf-schema#Class,Person,,,"The class for persons: alive, dead, undead, or fictional.",,http://schema.org/Person,https://w3id.org/dingo#,
+78,https://w3id.org/dingo#PersonRole,0,http://www.w3.org/2000/01/rdf-schema#Class,PersonRole,https://w3id.org/dingo#Role,,The class for person roles: function assumed by or ascribed to a person that takes part in something.,,,https://w3id.org/dingo#,
+79,https://w3id.org/dingo#Role,0,http://www.w3.org/2000/01/rdf-schema#Class,Role,,,"The class for roles: the function assumed by or ascribed to an entity (typically person, group of persons or organisation) in a particular situation.
+It can be used to precise or represent additional information about a relationship or property such as participation or membership. The class should be only used to derive subclasses.",,http://schema.org/Role,https://w3id.org/dingo#,
+80,https://w3id.org/dingo#SportsOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,SportsOrganisation,https://w3id.org/dingo#Organisation,,"Represents the class of all sports organizations, including sports teams, governing bodies, and sports associations.",,http://schema.org/SportsOrganisation,https://w3id.org/dingo#,
+81,https://w3id.org/dingo#SupranationalOrganisation,0,http://www.w3.org/2000/01/rdf-schema#Class,SupranationalOrganisation,https://w3id.org/dingo#Organisation,,International organisation with power and influence in the jurisdictions of its member states. Example: European Union.,,,https://w3id.org/dingo#,
+82,https://w3id.org/dingo#ThematicCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,ThematicCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded to projects on the basis of specified thematic/subject areas or well-defined areas of investigation indicated by the funding body.,,,https://w3id.org/dingo#,
+83,https://w3id.org/dingo#WorkingTimeCriterion,0,http://www.w3.org/2000/01/rdf-schema#Class,WorkingTimeCriterion,https://w3id.org/dingo#Criterion,,Grants are awarded to projects on the basis of percentage of work time specifically devoted to the funded research.,,,https://w3id.org/dingo#,
+84,https://w3id.org/dingo#Organisation,5329,http://www.w3.org/2000/01/rdf-schema#Class,Organisation,,['http://lod.openaire.eu/data/erc/source/'],The class for organisations: social entities with a collective goal.,,http://schema.org/Organisation,https://w3id.org/dingo#,
+85,https://w3id.org/dingo#FundingScheme,323,http://www.w3.org/2000/01/rdf-schema#Class,FundingScheme,,"['http://lod.openaire.eu/data/erc/source/fundingscheme/fp7/', 'http://lod.openaire.eu/data/erc/source/', 'http://lod.openaire.eu/data/erc/source/fundingscheme/h2020/', 'http://lod.openaire.eu/data/erc/source/programme/h2020/', 'http://lod.openaire.eu/data/erc/source/programme/fp7/']","The class for funding schemes: plans, designs, and/or programs that determines and organizes the funding.",,,https://w3id.org/dingo#,
+86,https://w3id.org/dingo#Grant,47930,http://www.w3.org/2000/01/rdf-schema#Class,Grant,,['http://lod.openaire.eu/data/erc/source/h2020/'],The class for grant: a disbursed fund payd to a recipient or beneficiary (a Participant) and the process for it.,,,https://w3id.org/dingo#,
+87,https://w3id.org/dingo#OrganisationRole,487958,http://www.w3.org/2000/01/rdf-schema#Class,OrganisationRole,https://w3id.org/dingo#Role,['http://lod.openaire.eu/data/erc/source/fp7/grantrole/'],The class for organisation roles: function assumed by or ascribed to an organisation that takes part in something.,,,https://w3id.org/dingo#,
+88,https://w3id.org/dingo#Project,47930,http://www.w3.org/2000/01/rdf-schema#Class,Project,,"['http://lod.openaire.eu/data/erc/source/fp7/', 'http://lod.openaire.eu/data/erc/source/h2020/']",The class for projects: an organised endeavour (collactive or individual) planned to reach a particular aim or achieve a result.,,,https://w3id.org/dingo#,
+89,https://w3id.org/dingo#GrantShare,243979,http://www.w3.org/2000/01/rdf-schema#Class,GrantShare,,['http://lod.openaire.eu/data/erc/source/h2020/grantshare/'],The class for grant shares: the full or proper portion or part allotted or belonging to or contributed to an individual entity within a Grant.,,,https://w3id.org/dingo#,
+90,https://w3id.org/dingo#ResearchPerformingOrganisation,4674,http://www.w3.org/2000/01/rdf-schema#Class,ResearchPerformingOrganisation,https://w3id.org/dingo#Organisation,['http://lod.openaire.eu/data/erc/source/'],Organisations devoted to research activities.,,,https://w3id.org/dingo#,
+91,https://w3id.org/dingo#GovernmentalOrganisation,3203,http://www.w3.org/2000/01/rdf-schema#Class,GovernmentalOrganisation,https://w3id.org/dingo#Organisation,"['http://lod.openaire.eu/data/erc/source/', 'http://lod.openaire.eu/data/erc/source/funder/']","Organisation or agency depending on a government, State or other supranational organisation and mainly operated by the government.",,http://schema.org/GovernmentOrganization,https://w3id.org/dingo#,
+92,https://w3id.org/dingo#EducationOrganisation,3123,http://www.w3.org/2000/01/rdf-schema#Class,EducationOrganisation,https://w3id.org/dingo#Organisation,['http://lod.openaire.eu/data/erc/source/'],Institution that provides education.,,http://schema.org/EducationalOrganisation,https://w3id.org/dingo#,
+93,https://w3id.org/dingo#ForProfitOrganisation,32926,http://www.w3.org/2000/01/rdf-schema#Class,ForProfictOrganisation,https://w3id.org/dingo#Organisation,['http://lod.openaire.eu/data/erc/source/'],For profit entity.,,,https://w3id.org/dingo#,
+94,http://www.openlinksw.com/schemas/virtrdf#QuadMapFormat,130,,,,['http://www.openlinksw.com/'],,,,,2
+95,http://www.openlinksw.com/schemas/virtrdf#QuadStorage,3,,,,['http://www.openlinksw.com/schemas/'],,,,,2
+96,http://www.openlinksw.com/schemas/virtrdf#array-of-QuadMapFormat,98,,,,['http://www.openlinksw.com/'],,,,,
+97,http://www.openlinksw.com/schemas/virtrdf#QuadMap,2,,,,['http://www.openlinksw.com/schemas/'],,,,,
+98,http://www.openlinksw.com/schemas/virtrdf#QuadMapValue,8,,,,['http://www.openlinksw.com/schemas/'],,,,,
+99,http://www.openlinksw.com/schemas/virtrdf#array-of-QuadMapColumn,8,,,,['http://www.openlinksw.com/schemas/'],,,,,
+100,http://www.openlinksw.com/schemas/virtrdf#QuadMapColumn,8,,,,['http://www.openlinksw.com/schemas/'],,,,,
+101,http://www.openlinksw.com/schemas/virtrdf#array-of-QuadMapATable,2,,,,['http://www.openlinksw.com/schemas/'],,,,,
+102,http://www.openlinksw.com/schemas/virtrdf#QuadMapATable,2,,,,['http://www.openlinksw.com/schemas/'],,,,,
+103,http://www.openlinksw.com/schemas/virtrdf#QuadMapFText,4,,,,['http://www.openlinksw.com/schemas/'],,,,,
+104,http://www.openlinksw.com/schemas/virtrdf#array-of-string,2,,,,['http://www.openlinksw.com/schemas/'],,,,,
+105,http://www.openlinksw.com/schemas/virtrdf#array-of-QuadMap,3,,,,['http://www.openlinksw.com/schemas/'],,,,,
+106,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,233,,,,"['http://www.w3.org/2002/07/', 'http://www.openlinksw.com/schemas/', 'https://w3id.org/']",,,,,
+107,http://www.w3.org/2000/01/rdf-schema#Class,94,,,,"['http://www.w3.org/2002/07/', 'http://www.openlinksw.com/schemas/', 'https://w3id.org/']",,,,,
+108,http://www.w3.org/ns/sparql-service-description#Service,1,,,,http://localhost:8890/,,,,,
+109,http://lod.openaire.eu/vocab/DatasourceEntity,50985,,,,['http://lod.openaire.eu/data/datasource/'],,,,,
+110,http://purl.org/goodrelations/v1#BusinessEntity,1,,,"['http://xmlns.com/foaf/0.1/Organization', 'http://xmlns.com/foaf/0.1/Organization']",http://www.openlinksw.com/schemas/,,,,,
+111,http://www.w3.org/2001/vcard-rdf/3.0#work,2,,,,['nodeID://'],,,,,
+112,http://www.w3.org/2001/vcard-rdf/3.0#voice,2,,,,['nodeID://'],,,,,
+113,http://www.w3.org/2001/vcard-rdf/3.0#internet,2,,,,['nodeID://'],,,,,
+114,http://purl.org/goodrelations/v1#LocationOfSalesOrServiceProvisioning,1,,,,http://www.openlinksw.com/schemas/,,,,,
+115,http://purl.org/goodrelations/v1#Offering,3,,,,['http://www.openlinksw.com/schemas/'],,,,,
+116,http://purl.org/goodrelations/v1#ActualProductOrServicesInstance,1,,,,http://www.openlinksw.com/schemas/,,,,,
+117,http://purl.org/goodrelations/v1#ProductOrServiceSomeInstancePlaceholder,1,,,,http://www.openlinksw.com/schemas/,,,,,
+118,http://purl.org/goodrelations/v1#PriceSpecification,1,,,,http://www.openlinksw.com/schemas/,,,,,
+119,http://purl.org/goodrelations/v1#TypeAndQuantityNode,3,,,,['http://www.openlinksw.com/schemas/'],,,,,
+120,http://purl.org/goodrelations/v1#ProductOrServicesSomeInstancesPlaceholder,3,,,http://purl.org/goodrelations/v1#ProductOrService,['http://www.openlinksw.com/schemas/'],,,,,
+121,http://www.ebusiness-unibw.org/ontologies/eclass/5.1.4/#C_AKJ315005-tax,1,,,,http://www.openlinksw.com/schemas/,,,,,
+122,http://purl.org/goodrelations/v1#Manufacturer,1,,,,http://www.openlinksw.com/schemas/,,,,,
+123,http://www.ebusiness-unibw.org/ontologies/eclass/5.1.4/#C_AAB316003-tax,1,,,,http://www.openlinksw.com/schemas/,,,,,
+124,http://www.ebusiness-unibw.org/ontologies/eclass/5.1.4/#C_AKE112003-tax,1,,,,http://www.openlinksw.com/schemas/,,,,,
+125,http://xmlns.com/foaf/0.1/Person,2,,,,['nodeID://'],,,,,
+126,http://www.w3.org/2002/07/owl#inverseFunctionalProperty,4,,,,"['http://www.rdfabout.com/rdf/schema/ussec/', 'http://dbpedia.org/property/', 'http://purl.org/dc/terms/']",,,,,
+127,http://lod.openaire.eu/vocab/ResultEntity,46515022,,,,['http://lod.openaire.eu/data/result/'],,,,,
+128,http://lod.openaire.eu/vocab/ProjectEntity,5466456,,,,['http://lod.openaire.eu/data/project/'],,,,,
+129,http://lod.openaire.eu/vocab/OrganizationEntity,215070,,,,['http://lod.openaire.eu/data/organization/'],,,,,
+130,http://schema.org/MonetaryAmount,339839,,,,"['http://lod.openaire.eu/data/erc/source/project/budget/fp7/', 'http://lod.openaire.eu/data/erc/source/h2020/grantshare/amount/']",,,,,
+131,http://schema.org/PostalAddress,49160,,,,['http://lod.openaire.eu/data/erc/source/location/'],,,,,
