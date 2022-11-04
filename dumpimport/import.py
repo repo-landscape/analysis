@@ -13,7 +13,7 @@ parser.add_argument('--filesLimit', type=int)
 parser.add_argument('--filesOffset', type=int)
 parser.add_argument('--truncate', action='store_true', help='Should the database table be truncated before the import')
 parser.add_argument('--verbose', action='store_true')
-parser.add_argument('entityType', choices=['communities_infrastructures', 'datasets', 'datasources', 'organizations', 'other_research_products', 'projects', 'publications', 'relations', 'software'])
+parser.add_argument('entityType', choices=['communities_infrastructures', 'dataset', 'datasource', 'organization', 'other_research_product', 'project', 'publication', 'relation', 'software'])
 parser.add_argument('jsonFileOrDir')
 args = parser.parse_args()
 
@@ -35,32 +35,34 @@ if args.filesOffset:
 if args.filesLimit:
     files = files[0:args.filesLimit]
 nFile = 0
+nLine = 0
 for file in files:
     nFile += 1
     logging.info(f'Processing file {file} ({nFile}/{len(files)})')
     try:
         with open(file, 'r') as fh:
             for line in fh:
+                nLine += 1
                 line = line.replace('\\u0000', '')
                 data = json.loads(line)
                 if args.entityType == 'relations':
                     cur.execute(
                         f"""
-                        INSERT INTO {args.entityType} (sourceid, targetid, reltype, sourcetype, targettype, data) 
-                        VALUES (%s, %s, %s, %s, %s, %s) 
+                        INSERT INTO relations (sourceid, targetid, reltype, data) 
+                        VALUES (%s, %s, %s, %s) 
                         ON CONFLICT (sourceid, targetid) DO UPDATE SET 
-                            reltype = EXCLUDED.reltype, sourcetype = EXCLUDED.sourcetype, targettype = EXCLUDED.targettype, data = EXCLUDED.data
+                            reltype = EXCLUDED.reltype, data = EXCLUDED.data
                         """,
-                        (data['source']['id'], data['target']['id'], data['reltype']['name'], data['source']['type'], data['target']['type'], line)
+                        (data['source']['id'], data['target']['id'], data['reltype']['name'], line)
                     )
                 else:
                     cur.execute(
-                        f"INSERT INTO {args.entityType} (id, data) VALUES (%s, %s) ON CONFLICT (id) DO UPDATE SET data = EXCLUDED.data",
-                        (data['id'], line)
+                        f"INSERT INTO entities (id, type, data) VALUES (%s, %s, %s) ON CONFLICT (id, type) DO UPDATE SET data = EXCLUDED.data",
+                        (data['id'], args.entityType, line)
                     )
         con.commit()
     except Exception as e:
         logging.error(e)
         con.rollback()
 T0 = (datetime.datetime.now() - T0).total_seconds()
-logging.info(f'{nFile} processed in {T0} s (on average {T0 / nFile} per file)')
+logging.info(f'{nFile} files and {nLine} lines processed in {T0} s (on average {T0 / nFile} s per file and {1000 * T0 / nLine} s per 1k lines)')
