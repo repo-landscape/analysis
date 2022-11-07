@@ -5,6 +5,7 @@ import logging
 import os
 import psycopg2
 import sys
+import traceback
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dbConf', default='user=postgres host=127.0.0.1')
@@ -45,15 +46,13 @@ for file in files:
                 nLine += 1
                 line = line.replace('\\u0000', '')
                 data = json.loads(line)
-                if args.entityType == 'relations':
+                if args.entityType == 'relation':
                     cur.execute(
                         f"""
-                        INSERT INTO relations (sourceid, targetid, reltype, data) 
-                        VALUES (%s, %s, %s, %s) 
-                        ON CONFLICT (sourceid, targetid) DO UPDATE SET 
-                            reltype = EXCLUDED.reltype, data = EXCLUDED.data
+                        INSERT INTO relations (sourceid, targetid, reltype) 
+                        VALUES (%s, %s, %s) 
                         """,
-                        (data['source']['id'], data['target']['id'], data['reltype']['name'], line)
+                        (data['source']['id'], data['target']['id'], data['reltype']['name'])
                     )
                 else:
                     cur.execute(
@@ -62,7 +61,7 @@ for file in files:
                     )
         con.commit()
     except Exception as e:
-        logging.error(e)
+        traceback.print_exc()
         con.rollback()
 T0 = (datetime.datetime.now() - T0).total_seconds()
 logging.info(f'{nFile} files and {nLine} lines processed in {T0} s (on average {T0 / nFile} s per file and {1000 * T0 / nLine} s per 1k lines)')
