@@ -1,5 +1,16 @@
 #!/bin/bash
-RECORD=6616871
+
+##########
+# Downdloads compressed OpenAIRE data dump from Zenodo
+#
+# The Zenodo resource id can be optionally provided as a first parameter
+# (if not, 6616871 is assumed) although it's likely that other resources
+# have slightly different internal structure and the download will (partially)
+# fail for them.
+##########
+
+RECORD="$1"
+RECORD=${RECORD:=6616871}
 curl -L https://zenodo.org/record/$RECORD/files/communities_infrastructures.tar?download=1 | tar -x
 curl -L https://zenodo.org/record/$RECORD/files/dataset_1.tar?download=1 | tar -x
 curl -L https://zenodo.org/record/$RECORD/files/datasource.tar?download=1 | tar -x

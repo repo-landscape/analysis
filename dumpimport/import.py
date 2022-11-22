@@ -24,7 +24,7 @@ T0 = datetime.datetime.now()
 con = psycopg2.connect(args.dbConf + (f' password= {args.dbPswd}' if args.dbPswd else ''))
 cur = con.cursor()
 if args.truncate:
-    cur.execute("TRUNCATE {args.entityType}")
+    cur.execute(f"TRUNCATE {args.entityType}")
     con.commit()
 if os.path.isfile(args.jsonFileOrDir):
     files = [args.jsonFileOrDir]
@@ -56,7 +56,7 @@ for file in files:
                     )
                 else:
                     cur.execute(
-                        f"INSERT INTO entities (id, type, data) VALUES (%s, %s, %s) ON CONFLICT (id, type) DO UPDATE SET data = EXCLUDED.data",
+                        f"INSERT INTO entities (id, type, data) VALUES (%s, %s, %s)",
                         (data['id'], args.entityType, line)
                     )
         con.commit()
@@ -64,4 +64,4 @@ for file in files:
         traceback.print_exc()
         con.rollback()
 T0 = (datetime.datetime.now() - T0).total_seconds()
-logging.info(f'{nFile} files and {nLine} lines processed in {T0} s (on average {T0 / nFile} s per file and {1000 * T0 / nLine} s per 1k lines)')
+logging.info(f'{nFile} files and {nLine} lines processed in {T0} s (on average {T0 / max(nFile, 1)} s per file and {1000 * T0 / max(nLine, 1)} s per 1k lines)')
