@@ -1,0 +1,23 @@
+#!/bin/bash
+RECORD=6616871
+curl -L https://zenodo.org/record/$RECORD/files/communities_infrastructures.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/dataset_1.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/datasource.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/organization.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/otheresearchproduct_1.tar?download=1 | tar -x && mv otheresearchproduct other_research_product
+curl -L https://zenodo.org/record/$RECORD/files/project.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_1.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_2.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_3.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_4.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_5.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_6.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_7.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_8.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_9.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/publication_10.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/relation_1.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/relation_2.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/relation_3.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/relation_4.tar?download=1 | tar -x
+curl -L https://zenodo.org/record/$RECORD/files/software.tar?download=1 | tar -x
