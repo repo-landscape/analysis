@@ -86,7 +86,7 @@ Remarks:
       {
         "fullname": "Charles-Hervé Vacheron",
         "name": "Charles-Hervé", 
-        "surname": ""Vacheron
+        "surname": "Vacheron"
         "pid": {"id": {"value": "0000-0003-1575-5847", "scheme": "orcid_pending"}
       }
     }
