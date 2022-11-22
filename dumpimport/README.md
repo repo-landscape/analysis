@@ -74,7 +74,7 @@ Remarks:
 
 * [Schemas provided by the OpenAIRE](https://zenodo.org/record/5799514) describe all possible properties a given entity type may contain.
   **It doesn't mean all entities actually provide all of them.**
-  ** The data is provided on the best effort basis only, e.g. an author can be denoted in any of following ways:
+  The data is provided on the best effort basis only, e.g. an author can be denoted in any of following ways:
     ```JSON
     [
       {"fullname": "Patsy Mill"},
