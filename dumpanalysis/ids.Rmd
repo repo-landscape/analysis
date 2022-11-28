@@ -1,0 +1,131 @@
+---
+title: 'Analyzing OpenAIRE identifiers'
+output: 
+  html_document: 
+    df_print: kable
+date: "2022-11-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r read}
+# create table id_prefixes as select type, substring(id, 1, 2) as prefix, substring(id, 4, 12) as schema, count(*) from entities group by 1, 2, 3;
+# insert into id_prefixes select reltype || '_source', substring(sourceid, 1, 2) as prefix, substring(sourceid, 4, 12) as schema, count(*) from relations group by 1, 2, 3;
+# insert into id_prefixes select reltype || '_target', substring(targetid, 1, 2) as prefix, substring(targetid, 4, 12) as schema, count(*) from relations group by 1, 2, 3;
+# select * from id_prefixes;
+d = readr::read_csv('ids.csv')
+```
+
+# Introduction
+
+Each OpenAIRE id used in the JSON dump consists of three parts:
+
+* a two-digits numeric prefix
+* 14-characters long, right padded with underscores name looking like an id namespace or something like that
+* 32-characters string looking like a hash
+
+In this document it was explored if there are any systematic relations between those parts which we can exploit to better organize the data inside the database.
+
+# Analyzis
+
+```{r}
+d %>% filter(!grepl('_source|_target', type)) %>% group_by(type, prefix) %>% summarize(n = n()) %>% tidyr::pivot_wider('type', names_from = 'prefix', values_from = 'n')
+```
+
+The id prefix seems to determine the entity schema:
+
+* `00` - community_infrastracture
+* `10` - datasource
+* `20` - organization
+* `40` - project
+* `50` - research product (dataset/publication/software/other research product)
+
+```{r}
+d = d %>%
+  mutate(typeId = case_when(
+    prefix == 0 ~ 'communities_infrastructures',
+    prefix == 10 ~ 'datasource',
+    prefix == 20 ~ 'organization',
+    prefix == 40 ~ 'project',
+    prefix == 50 ~ 'research product'
+  ))
+```
+
+Knowing that we can determine domain and range of relation properties.
+
+First let's take a look at domains (numbers are relations count).
+
+```{r}
+d %>% filter(grepl('_source', type)) %>% group_by(type, typeId) %>% summarize(n = sum(count)) %>% tidyr::pivot_wider('type', names_from = 'typeId', values_from = 'n') %>% arrange(type)
+```
+
+Doesn't look bad. Most properties have single domain. The only exceptions are:
+
+* `isProvidedBy` having domain `research product` or `datasource`
+* `provides` having domain `datasource` or `ogranization`
+* `IsRelatedTo` having any entity type as a domain
+
+Same table for ranges:
+
+```{r}
+d %>% filter(grepl('_target', type)) %>% group_by(type, typeId) %>% summarize(n = sum(count)) %>% tidyr::pivot_wider('type', names_from = 'typeId', values_from = 'n') %>% arrange(type)
+```
+
+With predictable outcomes:
+
+* `isProvidedBy` having range `datasource` or `ogranization`
+* `provides` having range `research product` or `datasource`
+* `IsRelatedTo` having any entity type as a range
+* all other properties having single entity type as a range.
+
+Now let's find out how many of the id prefixes (combination of entity type and namespace part) appearing in the relations actually exist for entities.
+
+Domain side:
+
+```{r}
+de = d %>% filter(!grepl('_source|_target', type)) %>% mutate(exists = TRUE) %>% select(-count)
+da = d %>% 
+  filter(grepl('_source', type)) %>%
+  rename(relation = type, relCount = count) %>%
+  mutate(relation = sub('_.*', '', relation)) %>%
+  left_join(de) %>%
+  group_by(relation, prefix, typeId, exists) %>%
+  summarize(relCount = sum(relCount)) %>%
+  arrange(relation, exists, typeId) %>%
+  rename(domain = 'typeId')
+da
+da %>% group_by(exists) %>% summarize(relCount = sum(relCount)) %>% ungroup() %>% mutate(percentage = round(100 * relCount / sum(relCount), 1))
+```
+
+Range side:
+
+```{r}
+de = d %>% filter(!grepl('_source|_target', type)) %>% mutate(exists = TRUE) %>% select(-count)
+ra = d %>% 
+  filter(grepl('_target', type)) %>%
+  rename(relation = type, relCount = count) %>%
+  mutate(relation = sub('_.*', '', relation)) %>%
+  left_join(de) %>%
+  group_by(relation, prefix, typeId, exists) %>%
+  summarize(relCount = sum(relCount)) %>%
+  arrange(relation, exists, typeId) %>%
+  rename(range = 'typeId')
+ra
+ra %>% group_by(exists) %>% summarize(relCount = sum(relCount)) %>% ungroup() %>% mutate(percentage = round(100 * relCount / sum(relCount), 1))
+```
+
+While we can see some id namespaces used in relations are missing in entities, the scale is neglectably small (0.4% of relations count) and skipping them on import won't provide any measurable speedup.
+
+Finally let's check if the hash part of the id is unique and can be used alone.
+
+```sql
+> select substring(id, 18), count(*) from entities group by 1 having count(*) > 1;
+(...)
+(531496 rows)
+```
+
+No, hashes alone aren't unique.

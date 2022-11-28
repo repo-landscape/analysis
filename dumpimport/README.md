@@ -74,7 +74,7 @@ Remarks:
 
 * [Schemas provided by the OpenAIRE](https://zenodo.org/record/5799514) describe all possible properties a given entity type may contain.
   **It doesn't mean all entities actually provide all of them.**
-  ** The data is provided on the best effort basis only, e.g. an author can be denoted in any of following ways:
+  The data is provided on the best effort basis only, e.g. an author can be denoted in any of following ways:
     ```JSON
     [
       {"fullname": "Patsy Mill"},
@@ -100,6 +100,8 @@ Remarks:
 Just ;-) use [Postgresql JSON functions](https://www.postgresql.org/docs/15/functions-json.html) to extract desired information pieces from the `data` column and process further with SQL, e.g.:
 
 ```sql
+-- just pretty-print data of few dataset entities
+select jsonb_pretty(data) from datasets limit 5;
 -- get counts for the "label" property of the "bestaccessright" property on dataset entities
 select data->'bestaccessright'->>'label', count(*) from datasets group by 1 order by 1;
 -- get counts of the "code" property of the "country" array on dataset entities
