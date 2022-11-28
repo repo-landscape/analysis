@@ -7,7 +7,23 @@ create table other_research_products partition of entities for values in ('other
 create table projects partition of entities for values in ('project');
 create table publications partition of entities for values in ('publication');
 create table software partition of entities for values in ('software');
-create table relations (sourceid text, targetid text, reltype text, data jsonb not null);
+create table relations (sourceid text not null, targetid text not null, reltype text not null) partition by list(reltype);
+create table relations_HasAmongTopNSimilarDocuments partition of relations for values in ('HasAmongTopNSimilarDocuments');
+create table relations_hasAuthorInstitution partition of relations for values in ('hasAuthorInstitution');
+create table relations_hasParticipant partition of relations for values in ('hasParticipant');
+create table relations_hosts partition of relations for values in ('hosts');
+create table relations_IsAmongTopNSimilarDocuments partition of relations for values in ('IsAmongTopNSimilarDocuments');
+create table relations_isAuthorInstitutionOf partition of relations for values in ('isAuthorInstitutionOf');
+create table relations_isHostedBy partition of relations for values in ('isHostedBy');
+create table relations_isParticipant partition of relations for values in ('isParticipant');
+create table relations_isProducedBy partition of relations for values in ('isProducedBy');
+create table relations_isProvidedBy partition of relations for values in ('isProvidedBy');
+create table relations_IsRelatedTo partition of relations for values in ('IsRelatedTo');
+create table relations_IsSupplementedBy partition of relations for values in ('IsSupplementedBy');
+create table relations_IsSupplementTo partition of relations for values in ('IsSupplementTo');
+create table relations_produces partition of relations for values in ('produces');
+create table relations_provides partition of relations for values in ('provides');
+
 
 -- preferably after data ingestion
 create index communities_infrastructures_id_idx on communities_infrastructures using btree(id);
@@ -18,7 +34,34 @@ create index other_research_products_id_idx on other_research_products using bri
 create index projects_id_idx on projects using btree(id);
 create index publications_id_idx on publications using brin(id);
 create index software_id_idx on software using btree(id);
-create index relations_sourceid_idx on relations using brin(sourceid);
-create index relations_targetid_idx on relations using brin(targetid);
-create index relations_reltype_idx on relations using brin(reltype);
+create index relations_HasAmongTopNSimilarDocuments_sourceid_idx on relations_HasAmongTopNSimilarDocuments using brin(sourceid);
+create index relations_hasAuthorInstitution_sourceid_idx on relations_hasAuthorInstitution using brin(sourceid);
+create index relations_hasParticipant_sourceid_idx on relations_hasParticipant using brin(sourceid);
+create index relations_hosts_sourceid_idx on relations_hosts using brin(sourceid);
+create index relations_IsAmongTopNSimilarDocuments_sourceid_idx on relations_IsAmongTopNSimilarDocuments using brin(sourceid);
+create index relations_isAuthorInstitutionOf_sourceid_idx on relations_isAuthorInstitutionOf using brin(sourceid);
+create index relations_isHostedBy_sourceid_idx on relations_isHostedBy using brin(sourceid);
+create index relations_isParticipant_sourceid_idx on relations_isParticipant using brin(sourceid);
+create index relations_isProducedBy_sourceid_idx on relations_isProducedBy using brin(sourceid);
+create index relations_isProvidedBy_sourceid_idx on relations_isProvidedBy using brin(sourceid);
+create index relations_IsRelatedTo_sourceid_idx on relations_IsRelatedTo using brin(sourceid);
+create index relations_IsSupplementedBy_sourceid_idx on relations_IsSupplementedBy using brin(sourceid);
+create index relations_IsSupplementTo_sourceid_idx on relations_IsSupplementTo using brin(sourceid);
+create index relations_produces_sourceid_idx on relations_produces using brin(sourceid);
+create index relations_provides_sourceid_idx on relations_provides using brin(sourceid);
+create index relations_HasAmongTopNSimilarDocuments_targetid_idx on relations_HasAmongTopNSimilarDocuments using brin(targetid);
+create index relations_hasAuthorInstitution_targetid_idx on relations_hasAuthorInstitution using brin(targetid);
+create index relations_hasParticipant_targetid_idx on relations_hasParticipant using brin(targetid);
+create index relations_hosts_targetid_idx on relations_hosts using brin(targetid);
+create index relations_IsAmongTopNSimilarDocuments_targetid_idx on relations_IsAmongTopNSimilarDocuments using brin(targetid);
+create index relations_isAuthorInstitutionOf_targetid_idx on relations_isAuthorInstitutionOf using brin(targetid);
+create index relations_isHostedBy_targetid_idx on relations_isHostedBy using brin(targetid);
+create index relations_isParticipant_targetid_idx on relations_isParticipant using brin(targetid);
+create index relations_isProducedBy_targetid_idx on relations_isProducedBy using brin(targetid);
+create index relations_isProvidedBy_targetid_idx on relations_isProvidedBy using brin(targetid);
+create index relations_IsRelatedTo_targetid_idx on relations_IsRelatedTo using brin(targetid);
+create index relations_IsSupplementedBy_targetid_idx on relations_IsSupplementedBy using brin(targetid);
+create index relations_IsSupplementTo_targetid_idx on relations_IsSupplementTo using brin(targetid);
+create index relations_produces_targetid_idx on relations_produces using brin(targetid);
+create index relations_provides_targetid_idx on relations_provides using brin(targetid);
 
