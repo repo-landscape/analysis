@@ -184,8 +184,12 @@ Since the four numbers given above have as sum 130, there are some organizations
 ### Find all organizations with country domain .at in their website URLs
 
 ```sql
-
+select id, data->>'legalname' as legalname, data->>'websiteurl'
+from organizations o
+where jsonb_path_exists(data, '$.websiteurl ? (@ like_regex "\\.at(/.*)?$")')
 ```
+
+Total count: **1216**
 
 ### To do
 
