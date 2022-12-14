@@ -69,13 +69,35 @@ Total count is **53,953**.
 
 - [ ] Check also `isRelatedTo` with all possible combinations
 
-### Which organizations have property "country"?
+### Which organizations do not have property "country"?
 
 ```sql
 select count(*) from organizations o where data->>'country' is null
 ```
 
 Organizations with no `country` property: **76,946** (about **27%** of the total)
+
+### Check if organizations have both code and label for country
+
+When an organization has a “country” property, it has both “code” and “label”.
+
+Queries like:
+
+```sql
+select count(*) from organizations o
+where data->'country'->>'code' is null
+and data->'country'->>'label' is not null 
+```
+
+and
+
+```sql
+select count(*) from organizations o
+where data->'country'->>'label' is null
+and data->'country'->>'country' is not null
+```
+
+return `0`.
 
 ### Get all organizations with country AT
 
@@ -86,7 +108,89 @@ where data->'country'->>'code' = 'AT'
 or data->'country'->>'label' = 'Austria'
 ```
 
-### Get all organizations with 
+Total count: **2380**.
+
+### Check if there are any inconsistencies between code and label for Austria
+
+All organizations with code “AT” also have label “Austria”, and the inverse too. The following two queries return `0`:
+
+```sql
+select count(*) from organizations o
+where data->'country'->>'code' = 'AT'
+and data->'country'->>'label' != 'Austria'
+```
+
+```sql
+select count(*) from organizations o
+where data->'country'->>'code' != 'AT'
+and data->'country'->>'label' = 'Austria' 
+```
+
+### Get all organizations with country ≠ Austria, but "Austria" (or sim.) in their name
+
+A very quick search with the `LIKE` operator revealed four organizations that feature “Austria”, “austria” (just to check misprints), “Österreich” or “österreich” in their name, but are assigned to different countries:
+
+```sql
+select id, data->>'legalname' as legalname, data->'country'->>'code' as code, data->'country'->>'label' as label
+from organizations o
+where data->'country'->>'code' != 'AT' and
+(data->>'legalname' like '%Austria%'
+or data->>'legalname' like '%austria%'
+or data->>'legalname' like '%Österreich%'
+or data->>'legalname' like '%österreich%')
+```
+
+|id|legalname|code|label|
+|--|---------|----|-----|
+|`20&#124;pending_org_::74980f511f97e3d35c98385415227c01`|Österreichisches Archäologisches Institut Zweigstelle Athen|GR|Greece|
+|`20&#124;openorgs____::05268c4fd826af1f9e98472b1f6a6797`|Institute e-Austria Timisoara|RO|Romania|
+|`20&#124;openorgs____::202c63c9b124e2e68d9389ead6dfa39f`|Office of Science & Technology Austria|US|United States|
+|`20&#124;pending_org_::5afce48c1140d6c4a2fdbf0bc312d029`|Austrian Cultural Forum|GB|United Kingdom|
+
+Remarkably, these are **NOT** mistakes, because:
+* Institute e-Austria Timisoara is actually Romanian. It has Austria in its name because the institute start-up was funded by BMWF and BMWA (see https://ieat.ro), and probably its main focus at first was on the relationships between Romania and Austria.
+* The Ministry of Education has [two Offices of Science and Technology Austria](https://www.bmbwf.gv.at/en/Topics/Research/Research-international/International-research-collaboration/OSTA.html), one in China and one in the US. Therefore, the Office we find in the OpenAIRE data is the American one (https://www.ostaustria.org, as indicated in OpenAIRE; among its “alternativenames”, one can find also “OSTA Washington”).
+* The same goes for the Austrian Cultural Forum in London, UK (https://www.acflondon.org)
+* The last result is clearly a “Zweigstelle” of the ÖAI in Athens, Greece.
+
+### Get all organizations with no country property, but "Austria" (or sim.) in their name
+
+```sql
+select id, data->>'legalname' as legalname from organizations o
+where data->>'country' is null and
+(data->>'legalname' like '%Austria%'
+or data->>'legalname' like '%austria%'
+or data->>'legalname' like '%Österreich%'
+or data->>'legalname' like '%österreich%')
+```
+
+| Labels | Count |
+|------------------------------------|---------------------------------------|
+|%Austria%                           |64                                     |
+|%austria% (just to check misprints) |0                                      |
+|%Österreich%                        |56                                     |
+|%österreich%                        |10                                     |
+|Combined                            |126 (≠ sum of four numbers above: 130) |
+
+Since the four numbers given above have as sum 130, there are some organizations where more than one of these filters apply – one of them being us:
+
+|id                                  |legalname                              |
+|------------------------------------|---------------------------------------|
+|20&#124;pending_org_::7149152ae0552b68193b6673df03e7aa |Österreichische Computer Gesellschaft (OCG) - Austrian Computer Society - Österreichische Computer Gesellschaft (OCG) - Austrian Computer Society |
+|20&#124;pending_org_::60c8c54fe22007374a83146dca448d2c |Austrian Institute for International Affairs - OIIP - Österreichisches Institut für Internationale Politik |
+|20&#124;pending_org_::2fecc0aa1080bef76b7cd9c7f8304393 |Österreichische Akademie der Wissenschaften - Austrian Centre for Digital Humanities (ACDH) |
+|20&#124;pending_org_::470b627d6f4b824914fd7f021f9fedd3 |Österreichische Akademie der Wissenschaften - ACE - Austrian Corpora and Editions |
+
+### Find all organizations with country domain .at in their website URLs
+
+```sql
+
+```
+
+### To do
+
+- [ ] Check also all "Austrian" designations in `legalshortname` (results might be different)
+- [ ] Another possibility would be to search for specific place names, or have a list of Austrian institutions
 
 ## Projects
 
@@ -101,4 +205,3 @@ or data->'country'->>'label' = 'Austria'
 |   |   | Datasource |   |
 |   |   | Organization |   |
 |   |   | Research product |   |
-
