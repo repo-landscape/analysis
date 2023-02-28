@@ -22,7 +22,7 @@ for TYPE in `find . -maxdepth 1 -type d | grep -v "\.$" | sort` ; do
   for j in `ls -1 $TYPE/*gz` ; do
     FILE=${j:0:-3}
     gunzip -c "$j" > "$FILE"
-    python3 $IMPORTSCRIPT $TYPE "$FILE" "${@:2}" | tee -a "import_$TYPE.log"
+    python3 $IMPORTSCRIPT $TYPE "$FILE" "${@:2}" 2>&1 | tee -a "import_$TYPE.log"
     rm -f "$FILE"
   done
 done
